@@ -1,11 +1,17 @@
 # Twitter-feed
 
-To Setup, Please run 
-npm install
+Currently the techstack used is -
 
-After installing the dependencies run
-npm run dev 
+*Jquery
+*Sass
+*Webpack
 
-To build the code for production
-npm run build
+Most of the design is implemented using flex-box model.
+The mock data is hardcoded in the javascript file.
+
+To Setup, Please run --------> npm install
+
+After installing the dependencies type ------->  npm run dev 
+
+To build the code for production -----------> npm run build
 
