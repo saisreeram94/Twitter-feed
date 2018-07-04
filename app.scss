@@ -1,0 +1,256 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote {
+  &:before, &:after {
+    content: '';
+    content: none; } }
+
+q {
+  &:before, &:after {
+    content: '';
+    content: none; } }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  box-sizing: border-box;
+}
+
+/* END OF RESET SCSS*/
+
+/* BreakPoint SCSS*/
+
+$mobile-width: 0px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin mobile {
+  @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+/* END OF BreakPoint SCSS*/
+
+$page-background: wheat;
+$header-background: white;
+$feed-background: white;
+$twitter-color: lightblue;
+$border-color-icon: #b5aeae;
+$main-background: #e1eef3;
+
+body {
+	background: $page-background;
+}
+
+main {
+	background: $main-background;
+	width: 100%;
+	padding-bottom: 30px;
+	@include desktop() {
+		width: 80%;
+		margin: 20px auto; 
+	}
+	@include tablet() {
+		width: 80%;
+		margin: 20px auto;
+	}
+}
+
+
+
+.header-wrapper {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: $header-background;
+	@include mobile() {
+			flex-wrap: wrap;
+		}
+	.icon-wrapper {
+		display: flex;
+		.icon-placeholders {
+			padding: 10px;
+			&.active {
+				border-bottom: 1px solid $twitter-color;
+			}
+			.fa, .far, .fas {
+				padding: 10px;
+    			border: 1px solid $border-color-icon;
+    			border-radius: 50%;
+			}
+		}
+		@include mobile() {
+			width: 100%;
+		}
+	}
+	.logo-wrapper {
+		.fa-twitter {
+			font-size: 40px;
+			&:before{
+				color: $twitter-color;
+			}
+		}
+		@include mobile() {
+				display: none;
+			}
+	}
+	.search-wrapper {
+		display: flex;
+		align-items: center;
+		
+		.search-container {
+			position: relative;
+    		border: 1px solid $border-color-icon;
+    		border-radius: 20px;
+    		.search-bar {
+    			height: 30px;
+    			border: none;
+    			background: transparent;
+    			outline: none;
+    			padding-left: 15px;
+    			appearance: none;
+    		}
+    		.fa-search {
+    			position: absolute;
+    			top: 7px;
+    			right: 10px;
+    		}
+		}
+		.profile-logo {
+			padding: 10px;
+			.fa, .far, .fas {
+				padding: 10px;
+    			border: 1px solid $border-color-icon;
+    			border-radius: 50%;
+			}
+			
+		}
+		@include mobile() {
+			width: 100%;
+		}
+
+	}
+}
+
+.tweets-nav-container {
+	margin: 30px auto 20px;
+	width: 80%;
+	background-color: $feed-background;
+	.nav-list {
+		display: flex;
+    	text-align: center;
+    	.nav-item {
+    		width: 100%;
+  			padding: 10px;
+  			div:first-child {
+  				color: $border-color-icon;
+  			}
+  			div:last-child {
+  				color: black;
+  				font-weight: bold;
+  			}
+    		&.active {
+	    		border-bottom: 3px solid $twitter-color;
+    		}
+    	}
+	}
+
+}
+
+.twitter-feeds {
+	margin: 30px auto 20px;
+	width: 80%;
+	background-color: $feed-background;
+	.feed-list {
+		display: flex;
+		flex-wrap: wrap;
+		.feed-list-item {
+			width: 100%;
+			border-bottom: 1px solid $border-color-icon;
+		}
+	}
+	.feed-container {
+		padding: 20px;
+		display: flex;
+		.profile-image-container {
+		    width: 30px;
+    		height: 30px;
+    		border-radius: 50%;
+    		.profile-image {
+    			width: 100%;
+    			border-radius: 50%;
+    		}
+		}
+		.feed-row {
+			padding-left: 20px;
+		}
+		.feed-first-row {
+			padding-bottom: 10px;
+			.profile-name {
+				padding-left: 20px;
+				opacity: 0.6;
+			}
+			.time-diff {
+				float: right;
+				padding-right: 20px;
+				opacity: 0.6;
+			}
+		}
+		.feed-third-row {
+			padding-top: 20px;
+    		opacity: 0.6;
+    		span {
+    			&:first-child {
+    				padding-left: 0;
+    			}
+    			padding-left: 10px;
+    			&:last-child {
+    				float: right;
+    				padding-right: 20px;
+    			}
+
+    		}
+		}
+	}
+}
